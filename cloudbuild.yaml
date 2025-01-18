@@ -1,0 +1,38 @@
+steps:
+  # Install dependencies
+  - name: 'node:18'
+    entrypoint: npm
+    args: ['install']
+    
+  # Run tests
+  - name: 'node:18'
+    entrypoint: npm
+    args: ['test']
+    
+  # Build application
+  - name: 'node:18'
+    entrypoint: npm
+    args: ['run', 'build']
+    
+  # Deploy to Cloud Run (example)
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - 'run'
+      - 'deploy'
+      - '${_REPOSITORY_NAME}'
+      - '--image'
+      - 'gcr.io/${PROJECT_ID}/${_REPOSITORY_NAME}:${_BRANCH_NAME}'
+      - '--region'
+      - 'us-central1'
+      - '--platform'
+      - 'managed'
+
+# Build the container image
+images:
+  - 'gcr.io/${PROJECT_ID}/${_REPOSITORY_NAME}:${_BRANCH_NAME}'
+
+substitutions:
+  _REPOSITORY_NAME: '' # Will be set by trigger
+  _BRANCH_NAME: '' # Will be set by trigger
+
+timeout: '1800s'
