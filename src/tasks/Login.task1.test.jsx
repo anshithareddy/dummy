@@ -3,7 +3,7 @@ import { describe, it, expect, vi } from 'vitest';
 import Login from '../components/Login';
 
 describe('Login Component', () => {
-  it('renders input fields for email and password', () => {
+  it('Create input fields for email and password.', () => {
     render(<Login />);
 
     const emailInput = screen.getByLabelText(/email/i);
@@ -13,7 +13,7 @@ describe('Login Component', () => {
     expect(passwordInput).toBeInTheDocument();
   });
 
-  it('renders Login and Sign Up buttons', () => {
+  it('Add a Sign Up and Login button.', () => {
     render(<Login />);
 
     const loginButton = screen.getByRole('button', { name: /login/i });
@@ -23,7 +23,7 @@ describe('Login Component', () => {
     expect(signUpButton).toBeInTheDocument();
   });
 
-  it('updates state on input change', () => {
+  it('Use state to handle input values.', () => {
     render(<Login />);
 
     const emailInput = screen.getByLabelText(/email/i);
