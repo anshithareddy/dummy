@@ -174,7 +174,7 @@ steps:
         this.results.status = 'completed';
         this.results.completed_at = new Date().toISOString();
         
-        const fileName = `${teamId}.${projectId}.${uid}.${this.taskId}.build.json`;
+        const fileName = `${teamId}_${projectId}_${uid}_${this.taskId}_build.json`;
         const filePath = `test-results/${teamId}/${projectId}/${uid}/${fileName}`;
         
         try {
