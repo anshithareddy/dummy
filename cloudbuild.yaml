@@ -52,8 +52,8 @@ steps:
     
     // Extract task ID from filename
     const getTaskId = (fileName) => {
-      const match = fileName.match(/\.task(\d+)\.test\.jsx$/);
-      return match ? `task${match[1]}` : null;
+      const match = fileName.match(/\.task-(\d+)\.test\.jsx$/);
+      return match ? `task-${match[1]}` : null;
     };
     
     // Group test files by task ID
@@ -174,7 +174,7 @@ steps:
         this.results.status = 'completed';
         this.results.completed_at = new Date().toISOString();
         
-        const fileName = `${teamId}__${projectId}__${uid}__${this.taskId}__build.json`;
+        const fileName = `${teamId}_${projectId}_${uid}_${this.taskId}_build.json`;
         const filePath = `test-results/${teamId}/${projectId}/${uid}/${fileName}`;
         
         try {
