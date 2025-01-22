@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [test11,setTest11]=useState('');
+  const [test12,setTest12]=useState('');
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
 
